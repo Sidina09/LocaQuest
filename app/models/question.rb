@@ -4,5 +4,4 @@ class Question
   field :title, type: String
   field :content, type: String
   field :location, type: String
-  belongs_to :user
 end

@@ -22,8 +22,18 @@ module LocaQuest
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
+    
+    require_relative '../app/middleware/auth_middleware'
 
-    config.middleware.use AuthMiddleware
+    config.middleware.insert_after ActionDispatch::Callbacks, ::AuthMiddleware
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'localhost:4200' # Adjust this to your frontend URL
+        resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      end
+    end
+    
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
