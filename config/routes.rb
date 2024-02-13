@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   resources :questions, only: [:index, :create]
   resources :answers, only: [:index]
   resources :answers, only: [:create]
+  resources :users, only: [:create]
+  
 
 end
