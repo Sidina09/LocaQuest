@@ -41,7 +41,8 @@ POST /questions: Create a new question.
 Answers
 GET /answers: Retrieve all answers.
 POST /answers: Create a new answer.
-Database Configuration
+
+## Database Configuration
 The project uses MongoDB as the database. Here's the configuration for development and test environments in config/mongoid.yml:
 
 yaml
